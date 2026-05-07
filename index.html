@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurrencyPro | Przelicznik Walut NBP</title>
+
+    <meta name="description" content="CurrencyPro to prosty i szybki przelicznik walut oparty na aktualnych kursach średnich NBP. Przeliczaj między różnymi walutami w czasie rzeczywistym.">
+    <meta name="keywords" content="przelicznik walut, kursy walut, NBP, aktualne kursy, konwerter walut, wymiana walut">
+    <meta name="author" content="RayskiDev">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://api.nbp.pl">
+</head>
+
+<body>
+
+    <main class="converter-card">
+        <header>
+            <h1>CurrencyPro</h1>
+            <p>Aktualne kursy średnie NBP</p>
+        </header>
+
+        <section class="converter-body">
+            <div class="input-group">
+                <label for="amount">Kwota do przeliczenia</label>
+                <input type="number" id="amount" value="1.00" step="0.01" min="0">
+            </div>
+
+            <div class="selection-container">
+                <div class="select-group">
+                    <label for="fromCurrency">Z waluty</label>
+                    <select id="fromCurrency">
+                    </select>
+                </div>
+
+                <button id="swapBtn" aria-label="Zamień waluty" title="Zamień waluty">
+                    <span class="icon">⇄</span>
+                </button>
+
+                <div class="select-group">
+                    <label for="toCurrency">Na walutę</label>
+                    <select id="toCurrency">
+                    </select>
+                </div>
+            </div>
+
+            <output class="result-area">
+                <span id="resultValue"></span>
+                <span id="resultCurrency"></span>
+            </output>
+        </section>
+
+        <footer>
+            <p>Ostatnia aktualizacja danych: <span id="updateDate">ładowanie...</span></p>
+        </footer>
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+
+</html>

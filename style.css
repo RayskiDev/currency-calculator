@@ -1,0 +1,253 @@
+/* Setup */
+:root {
+  --bg-body: #0f172a;
+  --bg-card: #1e293b;
+  --primary: #6366f1;
+  --primary-hover: #818cf8;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --input-bg: #0f172a;
+  --success: #22c55e;
+  --error: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+}
+
+body {
+  background-color: var(--bg-body);
+  background-image: radial-gradient(circle at top right, #1e1b4b, transparent);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Główna karta */
+.converter-card {
+  background: var(--bg-card);
+  width: 100%;
+  max-width: 600px;
+  padding: 2.5rem;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  background: linear-gradient(to right, #818cf8, #c084fc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Grupy wejściowe */
+.input-group,
+.select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+input {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+}
+
+/* Select */
+.selection-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  margin-bottom: 2rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.select-group {
+  flex: 1;
+  margin-bottom: 0;
+  min-width: 0;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  background-color: var(--input-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236366f1'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 1rem 2.5rem 1rem 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+select:hover:not(:disabled),
+select:focus:not(:disabled),
+select:active:not(:disabled) {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23818cf8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+}
+
+select option {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  padding: 12px;
+}
+
+/* Przycisk Swap */
+#swapBtn {
+  background: var(--border);
+  border: none;
+  color: var(--text-main);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-bottom: 0;
+
+  align-self: center;
+  margin: -10px 0;
+  z-index: 2;
+  transform: rotate(90deg);
+}
+
+#swapBtn:hover:not(:disabled) {
+  background: var(--primary);
+  transform: rotate(270deg);
+}
+
+#swapBtn .icon {
+  font-size: 1.4rem;
+}
+
+/* Disabled states */
+input:disabled,
+select:disabled,
+#swapBtn:disabled {
+  background: var(--border);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Sekcja Wyniku */
+.result-area {
+  display: block;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1),
+    rgba(192, 132, 252, 0.1)
+  );
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px dashed var(--primary);
+}
+
+#resultValue {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+#resultCurrency {
+  color: var(--primary-hover);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Stopka karty */
+footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* Responsywne style */
+@media (min-width: 768px) {
+  .selection-container {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  #swapBtn {
+    align-self: inherit;
+    margin: 0;
+    z-index: 2;
+    transform: rotate(0);
+  }
+
+  #swapBtn:hover:not(:disabled) {
+    transform: rotate(180deg);
+  }
+
+  .select-group, .input-group {
+    text-align: left;
+  }
+}
